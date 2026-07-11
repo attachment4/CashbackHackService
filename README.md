@@ -13,7 +13,8 @@
 ./gradlew test
 ```
 
-Тесты написаны на **JUnit 4** (`junit:junit:4.13`, `useJUnit()`).
+Тесты написаны на **JUnit 4** (`junit:junit:4.13.2`) и запускаются на **JUnit Platform**
+через vintage-движок (`org.junit.vintage:junit-vintage-engine`, `useJUnitPlatform()`).
 
 ## Ветки
 

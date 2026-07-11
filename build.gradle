@@ -6,19 +6,28 @@ group = 'ru.netology'
 version = '1.0-SNAPSHOT'
 
 java {
-    sourceCompatibility = 11;
+    sourceCompatibility = JavaVersion.VERSION_11
 }
-compileJava.options.encoding = "UTF-8";
-compileTestJava.options.encoding = "UTF-8";
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.13'
+    // JUnit 4 — версия, совместимая с текущими тестами (org.junit.Test / org.junit.Assert)
+    testImplementation 'junit:junit:4.13.2'
+
+    // Vintage-движок позволяет запускать JUnit 4 тесты на JUnit Platform
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.9.3'
 }
 
 test {
-    useJUnit()
+    // для задачи test настроен вызов JUnit Platform
+    useJUnitPlatform()
+
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
